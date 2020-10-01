@@ -2,28 +2,30 @@
   "name": "vue-carousel-generic",
   "version": "0.1.0",
   "private": true,
-  "main": "./dist/vue-carousel-generic.common.js",
   "author": {
     "name": "Artem Fedulov",
     "email": "arfedulov@gmail.com"
   },
-  "license": "MIT",
   "scripts": {
-    "serve-example": "vue serve example/ExampleMainPage.vue",
+    "lint": "vue-cli-service lint",
     "build-lib": "vue-cli-service build --target lib --name vue-carousel-generic src/main.js",
-    "lint": "vue-cli-service lint"
+    "serve-example": "vue serve example/ExampleMainPage.vue"
   },
+  "main": "./dist/vue-carousel-generic.common.js",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-eslint": "^4.5.6",
     "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
+    "prettier": "^1.19.1",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -33,7 +35,8 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "@vue/prettier"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
@@ -44,5 +47,6 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "license": "MIT"
 }
