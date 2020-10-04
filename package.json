@@ -1,10 +1,15 @@
 {
   "name": "vue-carousel-generic",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "author": {
     "name": "Artem Fedulov",
     "email": "arfedulov@gmail.com"
+  },
+  "keywords": ["vue", "carousel", "swiper"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arfedulov/vue-carousel-generic.git"
   },
   "scripts": {
     "lint": "vue-cli-service lint",

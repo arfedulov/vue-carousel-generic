@@ -89,9 +89,7 @@ export default {
  
  ## Slots
  
- - `item` - a single element in carousel
-   ###### slot props:
-     - `item` - a single element in carousel
+ - `item` - a single element in carousel (slot props: `{ item: any }`)
 
 ## Events
 
