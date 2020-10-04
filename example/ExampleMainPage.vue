@@ -72,19 +72,4 @@ export default {
   width: 100px;
   height: 100px;
 }
-
-.pagination {
-  width: 30%;
-  margin: 0 auto;
-}
-
-.pagination__page {
-  width: 30px;
-  height: 30px;
-  background-color: red;
-}
-
-.pagination__page--current {
-  background-color: blue;
-}
 </style>
