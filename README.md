@@ -1,5 +1,11 @@
 # vue-carousel-generic
 
+## Installation:
+
+```
+npm i vue-carousel-generic
+```
+
 ## Usage example:
 
 ```html
@@ -24,8 +30,7 @@
 </template>
 
 <script>
-import VueCarousel from "@/components/VueCarousel.vue";
-import "@/swipeEvents";
+import VueCarousel from "vue-carousel-generic";
 
 export default {
   components: { VueCarousel },
