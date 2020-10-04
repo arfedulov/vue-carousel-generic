@@ -25,10 +25,6 @@
 </template>
 
 <script>
-const CAROUSEL_SPEED = {
-  MAX: 5
-};
-
 export default {
   name: "VueCarousel",
   props: {
@@ -46,8 +42,10 @@ export default {
       validator: values => values.every(value => typeof value === "number")
     },
     speed: {
-      type: Number,
-      default: CAROUSEL_SPEED.MAX
+      type: [Number, String],
+      default: 1,
+      validator: value =>
+        typeof value === "string" ? value === "instant" : true
     },
     swipeThreshold: {
       type: Number,
@@ -84,7 +82,7 @@ export default {
 
       let paddingLeft = "0px";
       let translateX = this.currentItem * -this.itemWidth;
-      let transformTime = this.speed > 0 ? 1 / this.speed : 0;
+      let transformTime = this.speed === "instant" ? 0 : 1 / this.speed;
 
       if (first % 1 !== 0) {
         paddingLeft = `${this.itemWidth * first}px`;
