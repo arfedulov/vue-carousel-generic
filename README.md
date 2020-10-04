@@ -75,16 +75,16 @@ export default {
 ## Props
 
 - `items` - **required** - a list of elements to fill a carousel with;
-- `currentItem` - **required** the position number of the currently displayed item
+- `current-item` - **required** the position number of the currently displayed item
  (in case more than one item is visible at a time, `currentNumber` represents
  the position number of the first of visible elements);
-- `visibleAtATime` - **default:** `[1]` - a list of numbers which represent element's fractions displayed
+- `visible-at-aTime` - **default:** `[1]` - a list of numbers which represent element's fractions displayed
  in carousel in one slide (e.g. `[0.5, 1, 0.5]` means that on each slide there is half
  of the first element, full second element, half of the third element).
 - `speed` - **default:** `1` - the speed of the carousel;
-- `swipeThreshold` - **default:** `20` - the threshold in `px` for swipe events to fire;
-- `swipeTimeout` - **default:** `500` - the maximum length in `ms` of a single swipe;
-- `touchOnlySwipes` - **default:** `false` - if `true`, swipe events will only fire on
+- `swipe-threshold` - **default:** `20` - the threshold in `px` for swipe events to fire;
+- `swipe-timeout` - **default:** `500` - the maximum length in `ms` of a single swipe;
+- `touch-only-swipes` - **default:** `false` - if `true`, swipe events will only fire on
  touch devices
  
  ## Slots
@@ -92,3 +92,9 @@ export default {
  - `item` - a single element in carousel
    ###### slot props:
      - `item` - a single element in carousel
+
+## Events
+
+- `carousel-move` - Payload: `-1 | 1`
+   * `-1` go back one slide
+   * `1` go forward one slide
