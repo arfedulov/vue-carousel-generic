@@ -2,6 +2,7 @@
   <div
     ref="carousel"
     class="vue-carousel"
+    :class="carouselClasses"
     :data-swipe-threshold="swipeThreshold"
     :data-swipe-timeout="swipeTimeout"
     :data-swipe-with-mouse-ignore="touchOnlySwipes"
@@ -93,6 +94,11 @@ export default {
         transform: `translateX(${translateX}px)`,
         transition: `transform ${transformTime}s ease`
       };
+    },
+    carouselClasses() {
+      return {
+        'vue-carousel--mouse-swipe-enabled': !this.touchOnlySwipes
+      }
     }
   },
   watch: {
@@ -145,6 +151,10 @@ export default {
 <style scoped>
 .vue-carousel {
   overflow-x: hidden;
+}
+
+.vue-carousel--mouse-swipe-enabled {
+  user-select: none;
 }
 
 .vue-carousel__content {

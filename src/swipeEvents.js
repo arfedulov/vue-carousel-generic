@@ -38,6 +38,8 @@
   document.addEventListener("touchend", handleTouchEnd, false);
   document.addEventListener("mouseup", handleMouseUp, false);
 
+  document.addEventListener("dragstart", handleDragStart, false);
+
   var xDown = null;
   var yDown = null;
   var xDiff = null;
@@ -196,6 +198,19 @@
     yDown = e.touches[0].clientY;
     xDiff = 0;
     yDiff = 0;
+  }
+
+  function handleDragStart(e) {
+    const swipingWithMouseEnabled = getNearestAttribute(
+      e.target,
+      "data-swipe-with-mouse-ignore",
+      "false"
+    ) === "false";
+
+    if (swipingWithMouseEnabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   }
 
   function handleMouseDown(e) {
