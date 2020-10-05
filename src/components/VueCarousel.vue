@@ -95,6 +95,11 @@ export default {
       };
     }
   },
+  watch: {
+    items: {
+      handler: 'resetCarouselWidth'
+    }
+  },
   mounted() {
     this.resetCarouselWidth();
 
@@ -109,6 +114,10 @@ export default {
   },
   methods: {
     resetCarouselWidth() {
+      if (!this.$refs.carousel) {
+        return;
+      }
+
       const { width } = this.$refs.carousel.getBoundingClientRect();
 
       this.carouselWidth = width;
