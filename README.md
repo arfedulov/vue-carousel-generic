@@ -1,5 +1,7 @@
 # vue-carousel-generic
 
+Generic vue carousel component which makes minimum assumptions on appearance. It just provides the core carousel functionality.
+
 ## Installation:
 
 ```

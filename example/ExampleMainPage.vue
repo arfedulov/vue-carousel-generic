@@ -65,6 +65,7 @@ export default {
 .carousel {
   width: 50%;
   margin: 0 auto;
+  background-color: lightcoral;
 }
 
 .carousel__item {

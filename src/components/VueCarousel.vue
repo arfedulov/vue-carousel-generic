@@ -136,7 +136,6 @@ export default {
 <style scoped>
 .vue-carousel {
   overflow-x: hidden;
-  background-color: lightcoral;
 }
 
 .vue-carousel__content {
