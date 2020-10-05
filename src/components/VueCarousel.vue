@@ -11,11 +11,11 @@
       class="vue-carousel__content vue-carousel-content"
       :style="contentStyles"
     >
-      <template v-for="item in items">
+      <template v-for="(item, index) in items">
         <div
           class="vue-carousel-content__item vue-carousel-item"
           :style="itemStyles"
-          :key="item"
+          :key="index"
         >
           <slot name="item" :item="item"></slot>
         </div>
