@@ -42,6 +42,10 @@ export default {
       default: () => [1],
       validator: values => values.every(value => typeof value === "number")
     },
+    step: {
+      type: Number,
+      default: 1
+    },
     speed: {
       type: [Number, String],
       default: 1,
@@ -59,6 +63,10 @@ export default {
     touchOnlySwipes: {
       type: Boolean,
       default: false
+    },
+    swipeTimingFunction: {
+      type: String,
+      default: 'ease-out'
     }
   },
   data() {
@@ -92,7 +100,7 @@ export default {
       return {
         paddingLeft,
         transform: `translateX(${translateX}px)`,
-        transition: `transform ${transformTime}s ease`
+        transition: `transform ${transformTime}s ${this.swipeTimingFunction}`
       };
     },
     carouselClasses() {
@@ -133,15 +141,13 @@ export default {
     },
     onSwipe(event) {
       if (event.detail.dir === "left") {
-        this.onMove(1);
+        this.onMove(this.step);
 
         return;
       }
 
       if (event.detail.dir === "right") {
-        this.onMove(-1);
-
-        return;
+        this.onMove(-this.step);
       }
     }
   }

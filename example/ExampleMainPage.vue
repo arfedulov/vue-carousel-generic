@@ -5,7 +5,8 @@
       class="carousel"
       :items="items"
       :current-item="current"
-      :visible-at-a-time="[1]"
+      :visible-at-a-time="[1, 1, 1]"
+      :step="step"
       :speed="1"
       @carousel-move="updateCurrentItem"
     >
@@ -13,8 +14,8 @@
         <div class="carousel__item">{{ item }}</div>
       </template>
     </vue-carousel>
-    <button @click="updateCurrentItem(-1)">&langle;</button>
-    <button @click="updateCurrentItem(1)">&rangle;</button>
+    <button @click="updateCurrentItem(-step)">&langle;</button>
+    <button @click="updateCurrentItem(step)">&rangle;</button>
   </div>
 </template>
 
@@ -38,10 +39,10 @@ export default {
         "8",
         "9",
         "10",
-        "11",
-        "12"
+        "11"
       ],
-      current: 0
+      current: 0,
+      step: 3
     };
   },
   methods: {
@@ -55,7 +56,7 @@ export default {
       }
 
       this.current =
-        newPos < this.items.length ? newPos : this.items.length - 1;
+        newPos < this.items.length ? newPos : this.items.length - this.step;
     }
   }
 };

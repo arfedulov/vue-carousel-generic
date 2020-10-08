@@ -83,11 +83,13 @@ export default {
 - `visible-at-aTime` - **default:** `[1]` - a list of numbers which represent element's fractions displayed
  in carousel in one slide (e.g. `[0.5, 1, 0.5]` means that on each slide there is half
  of the first element, full second element, half of the third element).
+- `step` - **default:** `1` - carousel step;
 - `speed` - **default:** `1` - the speed of the carousel;
 - `swipe-threshold` - **default:** `20` - the threshold in `px` for swipe events to fire;
 - `swipe-timeout` - **default:** `500` - the maximum length in `ms` of a single swipe;
 - `touch-only-swipes` - **default:** `false` - if `true`, swipe events will only fire on
  touch devices
+- `swipeTimingFunction` - **default:** `ease-out` - css timing function for swipe transition
  
  ## Slots
  
@@ -95,6 +97,4 @@ export default {
 
 ## Events
 
-- `carousel-move` - Payload: `-1 | 1`
-   * `-1` go back one slide
-   * `1` go forward one slide
+- `carousel-move` - Payload: `number` - an index offset (negative for moving backwards);
