@@ -1,11 +1,12 @@
 <template>
-  <div
+  <vue-carousel-wrap
     ref="carousel"
     class="vue-carousel"
     :class="carouselClasses"
-    :data-swipe-threshold="swipeThreshold"
-    :data-swipe-timeout="swipeTimeout"
-    :data-swipe-with-mouse-ignore="touchOnlySwipes"
+    :swipe-threshold="swipeThreshold"
+    :swipe-timeout="swipeTimeout"
+    :touch-only-swipes="touchOnlySwipes"
+    @swipe="onSwipe"
   >
     <div
       ref="content"
@@ -22,12 +23,15 @@
         </div>
       </template>
     </div>
-  </div>
+  </vue-carousel-wrap>
 </template>
 
 <script>
+import VueCarouselWrap from "@/components/VueCarouselWrap.vue";
+
 export default {
   name: "VueCarousel",
+  components: {VueCarouselWrap},
   props: {
     items: {
       type: Array,
@@ -117,13 +121,9 @@ export default {
   mounted() {
     this.resetCarouselWidth();
 
-    this.$refs.carousel.addEventListener("swiped", this.onSwipe);
-
     window.addEventListener("resize", this.resetCarouselWidth);
   },
   beforeDestroy() {
-    this.$refs.carousel.removeEventListener("swiped", this.onSwipe);
-
     window.removeEventListener("resize", this.resetCarouselWidth);
   },
   methods: {
@@ -132,22 +132,19 @@ export default {
         return;
       }
 
-      const { width } = this.$refs.carousel.getBoundingClientRect();
+      const { width } = this.$refs.carousel.$el.getBoundingClientRect();
 
       this.carouselWidth = width;
     },
-    onMove(dir) {
-      this.$emit("carousel-move", dir);
-    },
-    onSwipe(event) {
-      if (event.detail.dir === "left") {
-        this.onMove(this.step);
+    onSwipe(direction) {
+      if (direction === "left") {
+        this.$emit("carousel-move", this.step);
 
         return;
       }
 
-      if (event.detail.dir === "right") {
-        this.onMove(-this.step);
+      if (direction === "right") {
+        this.$emit("carousel-move", -this.step);
       }
     }
   }
